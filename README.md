@@ -12,4 +12,6 @@ An example of how to create AR for web and how to test it (locally)
 - main.js has the JavaScript functionality
 
 ### Local server
-WebXR scripts must have HTTPS protocol so Node.js server is needed for local testing. 
+WebXR scripts must have HTTPS protocol so Node.js server is needed for local testing. I used OpenSSL.
+
+Use openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 for generating certificate and key. 
