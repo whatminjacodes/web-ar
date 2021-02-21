@@ -9,4 +9,7 @@ An example of how to create AR for web and how to test it (locally)
 ## How it works
 - www/index.html has the website functionality
 - www/css/style.css has the stylesheet
-- 
+- main.js has the JavaScript functionality
+
+### Local server
+WebXR scripts must have HTTPS protocol so Node.js server is needed for local testing. 
