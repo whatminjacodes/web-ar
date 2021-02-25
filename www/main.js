@@ -1,21 +1,17 @@
-// button to start XR experience
-let xrButton = document.getElementById('xr-button');
-
-// to control the xr session
+// General needed things
 let xrSession = null;
-
-// reference space used within an application
 let xrRefSpace = null;
-
-// Canvas OpenGL context used for rendering
 let gl = null;
 
-// Make sure WebXR is working as intended
+// Button for starting the camera and using XR
+let enableXRButton = document.getElementById('enable-xr-button');
+
 function checkXRStatus() {
-    // Check if secure context is available
+    // Check for secure context, at least Chrome needs this for testing WebXR
     if (!window.isSecureContext) {
-      document.getElementById("warning").innerText = "Secure context needed.";
+      document.getElementById("warning").innerText = "Secure context needed for WebXR.";
     }
+
     // Check if WebXR is supported
     if (navigator.xr) {
       navigator.xr.addEventListener('devicechange', checkXRSupportState);
@@ -32,18 +28,18 @@ function checkXRStatus() {
     });
   }
 
-  // Update the XR start button depending on the browser status
+  // Update the enable XR button depending on the browser status
   function updateXRButton(supported) {
     if (supported) {
-        xrButton.innerHTML = 'Start AR';
-        xrButton.addEventListener('clicked', onXRButtonClicked);
+        enableXRButton.innerHTML = 'Start AR';
+        enableXRButton.addEventListener('clicked', onXRButtonClicked);
       } else {
-        xrButton.innerHTML = 'AR is not found';
+        enableXRButton.innerHTML = 'AR is not available';
       }
-      xrButton.disabled = !supported;
+      enableXRButton.disabled = !supported;
   }
 
-  // XR button click listener
+  // Enable XR button click listener
   function onXRButtonClicked() {
     if (!xrSession) {
         navigator.xr.requestSession('immersive-ar', {
@@ -59,7 +55,7 @@ function checkXRStatus() {
   // XR session logic
   function onSessionStarted(session) {
     xrSession = session;
-    xrButton.innerHTML = 'Exit AR';
+    enableXRButton.innerHTML = 'Exit AR';
 
     session.addEventListener('end', onSessionEnded);
 
@@ -82,7 +78,7 @@ function checkXRStatus() {
   // Session end logic
   function onSessionEnded(event) {
     xrSession = null;
-    xrButton.innerHTML = 'Start AR';
+    enableXRButton.innerHTML = 'Start AR';
     document.getElementById('info').innerHTML = '';
     gl = null;
   }
@@ -96,7 +92,6 @@ function checkXRStatus() {
       return;
     }
     const pos = pose.transform.position;
-    info.innerHTML = `x:${pos.x.toFixed(2)} y:${pos.y.toFixed(2)} z:${pos.z.toFixed(2)}`;
   }
 
   checkXRStatus();
