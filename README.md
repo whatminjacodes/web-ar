@@ -29,4 +29,4 @@ Start the server with:
 ### Disclaimer
 I'm in no way website development/Node.js expert. This was my first time doing this and these steps helped me to setup this project. I researched what is needed to be done to get the MVP working and you should probably also do some research if you want to try these out and are not familiar with either. This project is definitely not build using best practises/ther important guidelines.
 
-Maybe this project will give the basic idea to someone wanting to try out WebXR :)
+Maybe this project will give the basic idea to someone wanting to try out WebXR :) Feel free to take inspiration/use these files any way you need!
