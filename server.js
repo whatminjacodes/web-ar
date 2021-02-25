@@ -1,3 +1,6 @@
+/*
+ *      Basic local server for testing WebAR
+ */
 var static = require('node-static');
 
 const fs = require('fs');

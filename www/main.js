@@ -1,3 +1,7 @@
+/*
+ *    Javascript file for adding needed WebAR logic
+ */
+
 // General needed things
 let xrSession = null;
 let xrRefSpace = null;
